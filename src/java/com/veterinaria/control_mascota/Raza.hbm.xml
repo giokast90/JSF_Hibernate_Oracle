@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2013 8:51:20 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.veterinaria.control_mascota.Raza" table="RAZA" schema="VETERINARIA">
+        <id name="idRaza" type="string">
+            <column name="ID_RAZA" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="animal" class="com.veterinaria.control_mascota.Animal" fetch="select">
+            <column name="ID_ANIMAL" length="8" not-null="true" />
+        </many-to-one>
+        <property name="nombreRaza" type="string">
+            <column name="NOMBRE_RAZA" length="60" not-null="true" />
+        </property>
+        <set name="mascotas" inverse="true">
+            <key>
+                <column name="ID_RAZA" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.veterinaria.control_mascota.Mascota" />
+        </set>
+    </class>
+</hibernate-mapping>

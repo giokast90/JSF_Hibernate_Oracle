@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Veterinaria</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form id="form1">
+                <p:panel header="Registrar Datos de la Mascota" style="margin-left: 10px;" toggleable="true">
+                    <p:panelGrid columns="3">
+                        <p:outputLabel value="Codigo Dueño:"/>
+                        <p:inputText id="idamo" value="#{amoBean.idAmo}" required="true"/>
+                        <p:message for="idamo"/>
+                        <p:outputLabel value="Nombre Dueño"/>
+                        <p:inputText id="nombredueno" value="#{amoBean.nombreAmo}" required="true"/>
+                        <p:message for="nombredueno"/>
+                        <p:outputLabel value="Codigo Mascota:"/>
+                        <p:inputText id="codmascota" value="#{mascotaBean.idMascota}" required="true"/>
+                        <p:message for="codmascota"/>
+                        <p:outputLabel value="Nombre Mascota:"/>
+                        <p:inputText id="nmascota" value="#{mascotaBean.nombreMascota}" required="true"/>
+                        <p:message for="nmascota"/>
+                        <p:outputLabel value="Tipo Animal:"/>
+                        <p:selectOneMenu id="tanimal" value="#{animalBean.nombreAnimal}">
+                            <f:selectItem itemLabel="Seleccione un Animal" itemValue=""/>
+                            <f:selectItems value="#{animalBean.listpets()}"/>
+                            <p:ajax update="raza" listener="#{animalBean.cargarraza()}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Raza:"/>
+                        <p:selectOneMenu id="raza" value="#{razaBean.nombreRaza}">
+                            <f:selectItem itemLabel="Seleccione una Raza" itemValue=""/>
+                            <f:selectItems value="#{animalBean.listaraza}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Año de Nacimiento:"/>
+                        <p:calendar value="#{mascotaBean.fechaNac}" id="anonacimiento" required="true" pattern="dd/mm/yyyy"/>
+                        <p:message for="anonacimiento"/>
+                        <p:outputLabel value="Notas"/>
+                        <p:inputTextarea value="#{mascotaBean.notas}"/>
+                    </p:panelGrid>
+                    <p:separator/>
+                    <p:commandButton value="Guardar" actionListener="#{mascotaBean.guardarmascota()}" id="btnguardar"/>
+                </p:panel>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

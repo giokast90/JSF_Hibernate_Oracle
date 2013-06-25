@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+    <property name="hibernate.connection.username">Veterinaria</property>
+    <property name="hibernate.connection.password">giokast9020</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="com/veterinaria/control_mascota/Amo.hbm.xml"/>
+    <mapping resource="com/veterinaria/control_mascota/Mascota.hbm.xml"/>
+    <mapping resource="com/veterinaria/control_mascota/Animal.hbm.xml"/>
+    <mapping resource="com/veterinaria/control_mascota/Raza.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
